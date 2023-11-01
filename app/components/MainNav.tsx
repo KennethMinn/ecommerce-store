@@ -12,6 +12,7 @@ interface MainNavProps {
 const MainNav: React.FC<MainNavProps> = ({ data }) => {
   const pathname = usePathname();
 
+  // new array = [{...},{...},...]
   const routes = data.map((route) => ({
     href: `/category/${route.id}`,
     label: route.name,
