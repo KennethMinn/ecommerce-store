@@ -8,6 +8,8 @@ import React from "react";
 
 const ProductPage = async ({ params }: { params: { productId: string } }) => {
   const product = await getProduct(params.productId);
+
+  //products with same category
   const suggestedProducts = await getProducts({
     categoryId: product.category.id,
   });
