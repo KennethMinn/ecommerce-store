@@ -1,8 +1,8 @@
 import React from "react";
-import Container from "../components/ui/container";
+import Container from "../../components/ui/container";
 import { getBillboard } from "@/actions/get-billboard";
-import Billboard from "../components/Billboard";
-import ProductList from "../components/ProductList";
+import Billboard from "../../components/Billboard";
+import ProductList from "../../components/ProductList";
 import getProducts from "@/actions/get-products";
 
 export const revalidate = 0;

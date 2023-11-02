@@ -10,7 +10,7 @@ interface ProductListProp {
 
 const ProductList = ({ title, items }: ProductListProp) => {
   return (
-    <div className=" space-y-4">
+    <div className=" space-y-4 px-5 md:p-0 lg:p-0">
       <div className=" font-bold text-3xl">{title}</div>
       {items.length === 0 && <NoResult />}
       <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
