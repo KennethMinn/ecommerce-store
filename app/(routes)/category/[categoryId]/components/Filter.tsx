@@ -17,7 +17,7 @@ const Filter = ({ valueKey, name, data }: FilterProps) => {
   const searchParams = useSearchParams();
   const router = useRouter();
 
-  const selectedValue = searchParams.get(valueKey); //"sizeId"
+  const selectedValue = searchParams.get(valueKey); //"sizeId" | "colorId"
 
   const onClick = (id: string) => {
     const current = qs.parse(searchParams.toString());
@@ -27,14 +27,13 @@ const Filter = ({ valueKey, name, data }: FilterProps) => {
       ...current,
       [valueKey]: id,
     };
-    //console.log("query : ", query); { sizeId:"sizeId"} -> {sizeId : null}
+    //console.log(query); { sizeId:"sizeId"} -> {sizeId : null}
 
     //If this condition is true, then the actions following the arrow will occur.
     if (current[valueKey] === id) {
       //valueKey = "sizeId" | "colorId"
       query[valueKey] = null; // {sizeId: null}
     }
-
     //console.log(valueKey, current[valueKey]); sizeId , undefined -> sizeId , "sizeId"
     //console.log(query[valueKey]); null
 
@@ -45,7 +44,7 @@ const Filter = ({ valueKey, name, data }: FilterProps) => {
       },
       { skipNull: true } // will skip this -> ?key=null
     );
-    //console.log("url : ", url); http://localhost:3001/category/2ff5faa1-4f4c-4b77-ab6e-4167edbd9a4e?sizeId=c28c49e6-298b-41d9-948a-8d40f7b2332d
+    //console.log(url); http://localhost:3001/category/2ff5faa1-4f4c-4b77-ab6e-4167edbd9a4e?sizeId=c28c49e6-298b-41d9-948a-8d40f7b2332d
 
     router.push(url);
   };
