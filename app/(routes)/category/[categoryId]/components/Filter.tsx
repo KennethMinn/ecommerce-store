@@ -40,7 +40,7 @@ const Filter = ({ valueKey, name, data }: FilterProps) => {
     const url = qs.stringifyUrl(
       {
         url: window.location.href, //previous URL -> http://localhost:3001/category/2ff5faa1-4f4c-4b77-ab6e-4167edbd9a4e
-        query, //
+        query, //{ sizeId:"sizeId"}
       },
       { skipNull: true } // will skip this -> ?key=null
     );
