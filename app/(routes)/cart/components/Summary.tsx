@@ -1,12 +1,13 @@
 "use client";
 
+import axios from "axios";
+import { useEffect } from "react";
+import { useSearchParams } from "next/navigation";
+
 import Button from "@/components/ui/button";
 import Currency from "@/components/ui/currency";
 import useCart from "@/hooks/use-cart";
-import axios from "axios";
-import { useSearchParams } from "next/navigation";
-import React, { useEffect } from "react";
-import toast from "react-hot-toast";
+import { toast } from "react-hot-toast";
 
 const Summary = () => {
   const searchParams = useSearchParams();
@@ -24,21 +25,19 @@ const Summary = () => {
     }
   }, [searchParams, removeAll]);
 
-  const totalPrice = items.reduce(
-    (total, item) => total + Number(item.price),
-    0
-  );
+  const totalPrice = items.reduce((total, item) => {
+    return total + Number(item.price);
+  }, 0);
 
   const onCheckout = async () => {
-    return;
-    // const response = await axios.post(
-    //   `${process.env.NEXT_PUBLIC_API_URL}/checkout`,
-    //   {
-    //     productIds: items.map((item) => item.id),
-    //   }
-    // );
+    const response = await axios.post(
+      `${process.env.NEXT_PUBLIC_API_URL}/checkout`,
+      {
+        productIds: items.map((item) => item.id),
+      }
+    );
 
-    // window.location = response.data.url;
+    window.location = response.data.url;
   };
 
   return (
